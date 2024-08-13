@@ -1,6 +1,6 @@
 ---
-name: "TBD"
+name: "Chandana Srinivas"
 role: "Teaching Assistant"
-email: "user3@example.com"
+email: "csrinivas2@dons.usfca.edu (CampusWire preferred)"
 office_hours: "TBD in CS Labs"
 ---

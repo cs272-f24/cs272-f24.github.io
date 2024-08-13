@@ -1,0 +1,77 @@
+---
+title: Relevance
+layout: raw
+---
+
+# Relevance Ranking
+
+Problem statement: 
+- Some search hits are more relevant than others
+- How can we compute an ordering for the hits? 
+
+---
+
+# Term Frequency
+
+The more times a search term appears in a document, the more relevant that document is as a search hit (obvs?)
+
+---
+
+# Term Frequency 2
+
+- Search<sub>1</sub>: 5 occurrences in a document containing 1,000,000 words
+- Search<sub>2</sub>: 3 occurrences in a document containing 1,000 words
+- Which hit is more relevant?
+
+--- 
+
+# Term Frequency 3
+
+TF = occurrences of term / words in that document
+
+---
+
+# Document Frequency
+
+- Search<sub>1</sub>: Search term appears in one document in a corpus of 10,000 documents
+- Search<sub>2</sub>: Search term appears in 9,000 documents of the same corpus
+- Which hit is more relevant?
+
+---
+
+# Document Frequency 2
+
+- DF = number of documents in which search term occurs
+- Mental Model: how much information is represented by a search term?
+- Proposed by <a href=https://en.wikipedia.org/wiki/Karen_Sp%C3%A4rck_Jones target="_blank">Karen Spärck Jones</a>
+
+---
+
+# Document Frequency 3
+
+- If a search term appears in a small fraction of the documents, its frequency is a small number
+- To combine Term Frequency with Document Frequency, what can we do to it?
+
+---
+
+# TF-IDF
+
+- Relevance = Term Frequency * **Inverse** Document Frequency
+- Should produce a number between 0.0 (not relevant) and 1.0 (very relevant)
+- Used in Search and Machine Learning applications
+
+---
+
+# PageRank
+
+- Google's Larry Page <a href=https://en.wikipedia.org/wiki/PageRank target="_blank">proposed</a> that relevance 
+on the World Wide Web is a function of how many pages hyperlink to a page
+- Normalized by how many outbound links are on that page (just like TF)
+- What pros or cons do you see to this approach?
+
+---
+
+# Machine Learning
+
+- In a world where ML applications are in high demand, we need oodles of accurately-labeled data to train the models
+- How does this relate to "information retrieval" techniques like TF-IDF or PageRank?

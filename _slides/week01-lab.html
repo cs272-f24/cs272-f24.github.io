@@ -1,0 +1,46 @@
+---
+title: Go Tools
+layout: raw
+---
+
+<br><br>
+# The Go Toolchain
+---
+# Command-Line Tools
+
+1. When you install go, the command line program `go` is present in `/usr/local/go/bin/`
+1. `go` can:
+    - build your programs (like `gcc` and `make`)
+    - test your programs using test cases you develop
+    - install new programs 
+    - format your code
+    - and much more (but not debug!)
+
+---
+# Debugging
+
+1. Sometimes, you'll be able to debug using `fmt.print()` (like C `printf()`)
+1. Sometimes, you'll need a real debugger
+1. In `go` the debugger is called `dlv` ("delve") and it works mostly like `gdb`
+1. Whether you debug from the command line or from VS Code, you're using the same `dlv`
+
+---
+# Go History
+
+1. When Go was invented, they designed it so all the tools and source code were in one directory
+1. This somewhat mirrors the way Google uses Go [internally](https://dl.acm.org/doi/pdf/10.1145/2854146)
+
+---
+# `GOPATH` and `GOBIN`
+
+1. When searching for information about programming Go, you'll find references to environment variables `GOPATH` and `GOBIN`
+1. We aren't going to use them, but the context is good to know
+1. When you use `go install` to install `dlv` or VS Code extensions, they are installed into `GOPATH`
+1. If you don't specify a `GOPATH` the default path is `~/go/`. I recommend you leave that alone.
+
+---
+# Go Modules
+
+1. The new way to write Go without putting all source code in the same directory is to use "modules"
+1. `go mod` provides a way to analyze dependencies and reduce conflicts
+1. We will use modules, not the old `GOPATH` mechanism
