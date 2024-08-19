@@ -1,8 +1,8 @@
 ---
 layout: assignment
-due: 2023-08-25 23:59:59 -0800
-github_url: https://classroom.github.com/a/p2ShvdwK
-published: false
+due: 2024-08-21 17:00
+github_url: https://classroom.github.com/a/TMD8P6hY
+published: true
 ---
 
 ## Step 1: Set up your terminal environment
@@ -42,7 +42,7 @@ published: false
         /usr/local/go/bin/go
 
         phil@Phils-MacBook-Pro:~ % go version
-        go version go1.20.5 darwin/arm64
+        go version go1.23.0 darwin/arm64
         ```
     </div>
 
@@ -57,7 +57,7 @@ published: false
 
         phil@PHILPETERSO43DB MINGW64 /
         $ go version
-        go version go1.20.5 windows/amd64
+        go version go1.23.0 windows/amd64
         ```
     </div>
 
