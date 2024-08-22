@@ -78,9 +78,9 @@ thing := calcThing()
 
 To declare an array:
 ```go
-arr := [3]int
+var arr [3]int
 ```
-To initialize:
+To declare and initialize:
 ```go
 arr := [3]int{2, 4, 6}
 ```
@@ -92,7 +92,7 @@ arr := [3]int{2, 4, 6}
 
 Slices are variable-length references
 ```go
-s := make([]int)
+s := []int{}
 s = append(s, 1)
 ```
 1. `make` creates a slice and initializes its length to zero
