@@ -1,0 +1,7 @@
+{
+  "tests": {
+    "TestExtract": 70,
+    "TestCleanHref": 30
+  },
+  "dueDate": "2024-09-03"
+}

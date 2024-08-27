@@ -1,8 +1,8 @@
 ---
 layout: assignment
-due: 2023-09-05 23:59:59 -0800
-github_url: https://classroom.github.com/a/WoFJcNGr
-published: false
+due: 2024-09-03 23:59:59 -0800
+github_url: https://classroom.github.com/a/JuYmgyy4
+published: true
 ---
 
 ## Requirements
@@ -23,16 +23,16 @@ the urls. Input would look something like this:
     </head>
     <body>
         <p>Hello World!</p>
-        <p>Welcome to <a href="https://cs272-0304-f23.github.io/">CS272</a>!</p>
+        <p>Welcome to <a href="https://cs272-f24.github.io/">CS272</a>!</p>
     </body>
 </html>
 ```
 
 **extract:** You will extract all of the words between html tags and the urls within the href Tag Attributes.
 
-To tackle this problem, you will need to `go get "golang.org/x/net/html"` and use the `html.Tokenizer` struct to 
-comb through the HTML tokens and their content. See the package docs [here](https://pkg.go.dev/golang.org/x/net@v0.12.0/html)
-and see the Tokenizer and its functions [here](https://pkg.go.dev/golang.org/x/net@v0.12.0/html#Tokenizer). Your 
+To tackle this problem, you will need to `go get "golang.org/x/net/html"` and use `html.Parser`  to 
+comb through the HTML parse nodes and their content. See the package docs [here](https://pkg.go.dev/golang.org/x/net@v0.12.0/html)
+and see the Parser and its functions [here](https://pkg.go.dev/golang.org/x/net/html#Parse). Your 
 **extract** function should produce output as follows:
 
 
@@ -53,10 +53,10 @@ words, hrefs := extract(body)
 
 Your extract function will produce urls. Some of which will be relative urls. For example, on our course
 website, the link to our syllabus is `<a href="/syllabus/">Syllabus<a>`. We want to remember that this is off
-of a base url (in this case, our course site: `https://cs272-0304-f23.github.io/`).
+of a base url (in this case, our course site: `https://cs272-f24.github.io/`).
 
 ```go
-host := "https://cs272-0304-f23.github.io/"
+host := "https://cs272-f24.github.io/"
 hrefs := []string{ "/", "/help/", "/syllabus/", "https://gobyexample.com/" }
 
 for _, url := range hrefs {
@@ -65,18 +65,18 @@ for _, url := range hrefs {
 
 /*
   output:
-https://cs272-0304-f23.github.io/
-https://cs272-0304-f23.github.io/help/
-https://cs272-0304-f23.github.io/syllabus/
+https://cs272-f24.github.io/
+https://cs272-f24.github.io/help/
+https://cs272-f24.github.io/syllabus/
 https://gobyexample.com/
 */
 ```
 
 ## Given
 
-Recall the testing example we covered in class [here](https://github.com/cs272-0304-f23/inclass/tree/main/week02).
+Recall the testing example we covered in class [here](https://github.com/cs272-f24/inclass/tree/main/week02).
 
 ## Rubric
-Your lab will receive the score indicated by the GitHub autograding action using this rubric:
-1. 80 points: TestExtract (do you extract the correct words and hrefs).
-1. 20 points: TestCleanHref (do you clean the hrefs accurately)
+Your lab will receive the score indicated by the GitHub autograding action using this rubric. Use these names exactly, including case.
+1. 70 points: TestExtract (do you extract the correct words and hrefs).
+1. 30 points: TestCleanHref (do you clean the hrefs accurately)
