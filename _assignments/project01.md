@@ -1,55 +1,66 @@
 ---
 layout: assignment
-due: 2023-09-18 23:59:59 -0800
-github_url: https://classroom.github.com/a/WmJMG2FO
-published: false
+due: 2024-09-09 23:59:59 -0800
+github_url: https://classroom.github.com/a/X5DJINEw
+published: true
 ---
-## Requirements
-1. You will build a web crawler which incorporates the elements of the prior lab assignments, including their test cases: 
-    1. Download from a URL
-    1. Extract non-markup text using Go's `html.Parser`
-    1. Extract `href` attributes from `<a>` tags
-1. Project01 adds the following new features, which must include new test cases
-    1. An in-memory inverted index based on Go's `map`
-    1. An HTTP server which can search an index
-    1. [Snowball stemmer](https://github.com/kljensen/snowball)
-1. Your solution will crawl the text of [Romeo and Juliet](/tests/rnj/), which I got from [Project Gutenberg](https://www.gutenberg.org/) and divided
-into an HTML document per scene.
-1. You will write a `TestSearch` function which tests these three cases for the inverted index, returning the term frequency for each one (i.e. the map of string to frequency)
-    1. Search `https://cs272-0304-f23.github.io/tests/rnj/sceneI_30.0.html` for `Verona` should find one hit:
-        ```
-        "https://cs272-0304-f23.github.io/tests/rnj/sceneI_30.0.html": 1
-        ```
-    1. Search `https://cs272-0304-f23.github.io/tests/rnj/sceneI_30.1.html` for `Benvolio` should return 26 hits:
-        ```
-        "https://cs272-0304-f23.github.io/tests/rnj/sceneI_30.1.html": 26
-        ```
-    1. Search `https://cs272-0304-f23.github.io/tests/rnj/` for `Romeo` should return these hits:
-        ```
-        "https://cs272-0304-f23.github.io/tests/rnj/sceneI_30.0.html":  2,
-        "https://cs272-0304-f23.github.io/tests/rnj/sceneI_30.1.html":  22,
-        "https://cs272-0304-f23.github.io/tests/rnj/sceneI_30.3.html":  2,
-        "https://cs272-0304-f23.github.io/tests/rnj/sceneI_30.4.html":  17,
-        "https://cs272-0304-f23.github.io/tests/rnj/sceneI_30.5.html":  15,
-        "https://cs272-0304-f23.github.io/tests/rnj/sceneII_30.2.html": 42,
-        "https://cs272-0304-f23.github.io/tests/rnj/":                  200,
-        "https://cs272-0304-f23.github.io/tests/rnj/sceneI_30.2.html":  15,
-        "https://cs272-0304-f23.github.io/tests/rnj/sceneII_30.0.html": 3,
-        "https://cs272-0304-f23.github.io/tests/rnj/sceneII_30.1.html": 10,
-        "https://cs272-0304-f23.github.io/tests/rnj/sceneII_30.3.html": 13,
-        ```
-1. You can use `reflect.DeepEqual()` to test the equivalence of your `got` map and your `want` map
 
+## Requirements
+Project01 adds support for http
+
+1. You will develop and test a web crawler, reusing your `clean()` and `extract()` code from lab02
+1. Your implementation must compile and pass *your* tests `TestDownload` and `TestCrawl`
+1. Your implementation will use the published test data
+  - `https://cs272-f24.github.io/tests/index.html`
+  - `https://cs272-f24.github.io/tests/href.html`
+  - `https://cs272-f24.github.io/tests/simple.html`
+  - `https://cs272-f24.github.io/tests/style.html`
+`
+1. Your test will run automatically in your repo as a GitHub action.
+
+Given a base URL, download the web page from that address using Go's `[net/http]`(https://pkg.go.dev/net/http) package. We can then leverage the 
+extraction functionality from `lab02` to get the words and cleaned URLs in this downloaded page. The next 
+step is the stem the words we get from this webpage.
+
+**download** Given a url, download the content using the `http` package.
+```go
+url := "https://cs272-f24.github.io/"
+body, err := download(url)
+
+// now you can extract(body) if there are no errors!
+```
+
+**crawl** Given a seed URL, **download** the webpage, **extract** the words and URLs, and add all **cleaned URLss** 
+found to a download queue. This queue should only crawl each url **once** and repeat this process for each url.
+```go
+url := "https://cs272-f24.github.io/"
+crawl(url)
+
+/*
+  your output might look something like this
+  although this is not part of the automated test:
+
+  download: url=https://cs272-f24.github.io/
+  download: result=ok
+  download: url=https://cs272-f24.github.io/help/
+  download: result=ok
+  download: url=https://cs272-f24.github.io/syllabus/
+  download: result=ok
+  download: url=https://cs272-f24.github.io/syllabus/assignments/lab01.html
+  download: result=ok
+*/
+```
 ## Given
 
-In lecture meetings we will discuss and provide sample code for:
-1. Hash tables, the underlying technology for go `map`
-1. Inverted indexes, which can be used to facilitate searching a corpus of documents
-1. Word stemming
-1. Web servers in Go
+In lecture, we will demonstrate:
+1. the [`net/http`](https://pkg.go.dev/net/http) client
+1. [`net/http/httptest`](https://pkg.go.dev/net/http/httptest) for "mocking" a server
+1. Simple web page [test cases](https://cs272-f24.github.io/tests/project01/). You can copy the HTML source into your test code.
 
 ## Rubric
-1. 70 pts: correctness as shown by the autograder workflow on github.com
-    1. 10 pts for `TestCrawl` continuing to pass
-    1. 60 pts for `TestSearch` passing
-1. 30 pts: code review meeting with the instructor or TA
+Your lab will receive the score indicated by the GitHub autograding action using this rubric:
+1. 5 pts: `TestExtract()`
+1. 5 pts: `TestCleanHref()`
+1. 35 pts: `TestDownload()` (do you download the correct content)
+1. 35 pts: `TestCrawl()` (can you crawl a given seed url and download it along with all of the links embedded within)
+1. 20 pts: 1:1 code review to review your coding style and test cases
