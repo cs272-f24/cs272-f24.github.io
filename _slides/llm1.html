@@ -1,0 +1,107 @@
+---
+title: LLM Introduction
+layout: raw
+---
+<br>
+<br>
+
+# Adding "AI" to CS 272
+
+---
+
+# What is CS 272?
+
+1. Advanced programming in Go or Java <!-- .element: class="fragment" -->
+1. Build a web crawler and search engine <!-- .element: class="fragment" -->
+1. Information Retrieval (IR): indexing, relevance ranking <!-- .element: class="fragment" -->
+1. Build a web server and front-end <!-- .element: class="fragment" -->
+
+---
+
+# What's Wrong With That?
+
+1. Nothing really. Google, Bing, Apache Solr etc. all work that way <!-- .element: class="fragment" -->
+1. I bet the last IR-based search engine has been built <!-- .element: class="fragment" -->
+1. Could we use an LLM to address the IR need, creating a relevant programming project? <!-- .element: class="fragment" -->
+
+---
+
+# Criteria
+
+1. Build skills in contemporary LLM tech <!-- .element: class="fragment" -->
+1. Address a need which can't be met with consumer-facing LLMs <!-- .element: class="fragment" -->
+1. Developed in Go <!-- .element: class="fragment" -->
+
+---
+
+# Idea
+
+1. ChatGPT can't answer questions unless it was trained on the right information <!-- .element: class="fragment" -->
+1. Facts not available at training time lead to "hallucinations" <!-- .element: class="fragment" -->
+
+![image](./llm1-1.png) <!-- .element: class="fragment" -->
+
+---
+
+# RAG
+
+1. This problem can be solved with Retrieval Augmented Generation (RAG) <!-- .element: class="fragment" -->
+1. RAG combines new, local, or private factual information with the LLM's question-answering ability <!-- .element: class="fragment" -->
+1. How do the pieces fit together? <!-- .element: class="fragment" -->
+
+---
+
+# Embedding
+
+1. According to All You Need is Attention, we can take free text and figure out which words are most important <!-- .element: class="fragment" -->
+1. Based on the important words, we can generate numeric tokens in the LLM's vocabulary <!-- .element: class="fragment" -->
+1. We can generate a "vector" (array) of those tokens <!-- .element: class="fragment" -->
+1. The vectors for a user question are said to be "embedded" in the LLM's vector space <!-- .element: class="fragment" -->
+
+---
+
+# Storing Embeddings
+
+1. Starting with the USF course listing (thanks to the registrar!) <!-- .element: class="fragment" -->
+1. Use OpenAI's embedding function to create tokens and vectors <!-- .element: class="fragment" -->
+1. Store the embeddings in a vector database such as ChromaDB <!-- .element: class="fragment" -->
+1. A vector DB is a key-value store: embedding to source text <!-- .element: class="fragment" -->
+
+---
+
+# Using Embeddings
+
+1. Get a free text question from the user <!-- .element: class="fragment" -->
+1. Compute the embedding for the question <!-- .element: class="fragment" -->
+1. Query ChromaDB for the nearest neighbors to that embedding <!-- .element: class="fragment" -->
+1. The query results are the source text for the nearest neighbor keys <!-- .element: class="fragment" -->
+
+---
+
+# Adding the LLM
+
+1. Use the source text from the vector DB as a prompt to the LLM <!-- .element: class="fragment" -->
+1. The LLM's question-answering code incorporates the new fact <!-- .element: class="fragment" -->
+1. We don't send the embedding to the LLM <!-- .element: class="fragment" -->
+
+---
+
+# Results
+
+![image](./llm1-2.png) <!-- .element: class="fragment" -->
+
+Cool, let's try adding the whole course catalog <!-- .element: class="fragment" -->
+
+---
+
+# Problems
+
+1. Nearest neighbor calculation misses "Phil" due to "PHIL(osophy)" <!-- .element: class="fragment" -->
+1. We can make structured queries in ChromaDB <!-- .element: class="fragment" -->
+1. How to get structured queries from user-entered free text? <!-- .element: class="fragment" -->
+
+---
+
+# Use the LLM to get structure
+
+![image](./llm1-3.png) <!-- .element: class="fragment" -->
