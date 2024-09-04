@@ -30,7 +30,8 @@ layout: raw
 
 1. Build skills in contemporary LLM tech <!-- .element: class="fragment" -->
 1. Address a need which can't be met with consumer-facing LLMs <!-- .element: class="fragment" -->
-1. Developed in Go <!-- .element: class="fragment" -->
+1. Programmable in Go <!-- .element: class="fragment" -->
+1. Implementation language doesn't matter that much <!-- .element: class="fragment" -->
 
 ---
 
@@ -53,7 +54,8 @@ layout: raw
 
 # Embedding
 
-1. According to All You Need is Attention, we can take free text and figure out which words are most important <!-- .element: class="fragment" -->
+1. According to Attention Is All You Need 
+we can take free text and computer which words are most important <!-- .element: class="fragment" -->
 1. Based on the important words, we can generate numeric tokens in the LLM's vocabulary <!-- .element: class="fragment" -->
 1. We can generate a "vector" (array) of those tokens <!-- .element: class="fragment" -->
 1. The vectors for a user question are said to be "embedded" in the LLM's vector space <!-- .element: class="fragment" -->
@@ -65,7 +67,13 @@ layout: raw
 1. Starting with the USF course listing (thanks to the registrar!) <!-- .element: class="fragment" -->
 1. Use OpenAI's embedding function to create tokens and vectors <!-- .element: class="fragment" -->
 1. Store the embeddings in a vector database such as ChromaDB <!-- .element: class="fragment" -->
-1. A vector DB is a key-value store: embedding to source text <!-- .element: class="fragment" -->
+1. A vector DB is a key-value store: k:embedding, v:source text <!-- .element: class="fragment" -->
+
+---
+
+# Storing Embeddings
+
+![image](/slides/llm1-storing.png) 
 
 ---
 
@@ -78,11 +86,17 @@ layout: raw
 
 ---
 
-# Adding the LLM
+# Using the LLM
 
 1. Use the source text from the vector DB as a prompt to the LLM <!-- .element: class="fragment" -->
 1. The LLM's question-answering code incorporates the new fact <!-- .element: class="fragment" -->
 1. We don't send the embedding to the LLM <!-- .element: class="fragment" -->
+
+---
+ 
+# Using the LLM
+
+![image](/slides/llm1-using.png) 
 
 ---
 
@@ -96,12 +110,31 @@ Cool, let's try adding the whole course catalog <!-- .element: class="fragment" 
 
 # Problems
 
-1. Nearest neighbor calculation misses "Phil" due to "PHIL(osophy)" <!-- .element: class="fragment" -->
-1. We can make structured queries in ChromaDB <!-- .element: class="fragment" -->
+1. Nearest neighbor calculation misses "Phil" due to "PHIL(osophy)" 
+1. We can make structured `("instructor": "Phil Peterson")` queries in ChromaDB 
 1. How to get structured queries from user-entered free text? <!-- .element: class="fragment" -->
 
 ---
 
 # Use the LLM to get structure
 
-![image](/slides/llm1-3.png) <!-- .element: class="fragment" -->
+![image](/slides/llm1-3.png) 
+
+---
+
+# Use the LLM to get structure
+
+![image](/slides/llm1-llm.png) 
+
+---
+
+# References
+
+- [Attention Is All You Need](https://en.wikipedia.org/wiki/Attention_Is_All_You_Need)
+- [OpenAI Go Client](https://github.com/sashabaranov/go-openai)
+- [ChromaDB](https://www.trychroma.com/)
+- [ChromaDB Go Client](https://github.com/amikos-tech/chroma-go)
+
+---
+
+# Demo
