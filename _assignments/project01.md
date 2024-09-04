@@ -11,14 +11,14 @@ Project01 adds support for http
 1. You will develop and test a web crawler, reusing your `clean()` and `extract()` code from lab02
 1. Your implementation must compile and pass *your* tests `TestDownload` and `TestCrawl`
 1. Your implementation will use the published test data
-  - `https://cs272-f24.github.io/tests/index.html`
-  - `https://cs272-f24.github.io/tests/href.html`
-  - `https://cs272-f24.github.io/tests/simple.html`
-  - `https://cs272-f24.github.io/tests/style.html`
+  - [`https://cs272-f24.github.io/tests/index.html`](https://cs272-f24.github.io/tests/index.html)
+  - [`https://cs272-f24.github.io/tests/href.html`](https://cs272-f24.github.io/tests/href.html)
+  - [`https://cs272-f24.github.io/tests/simple.html`](https://cs272-f24.github.io/tests/simple.html)
+  - [`https://cs272-f24.github.io/tests/style.html`](https://cs272-f24.github.io/tests/style.html)
 `
 1. Your test will run automatically in your repo as a GitHub action.
 
-Given a base URL, download the web page from that address using Go's `[net/http]`(https://pkg.go.dev/net/http) package. We can then leverage the 
+Given a base URL, download the web page from that address using Go's [`net/http`](https://pkg.go.dev/net/http) package. We can then leverage the 
 extraction functionality from `lab02` to get the words and cleaned URLs in this downloaded page. The next 
 step is the stem the words we get from this webpage.
 
@@ -30,7 +30,7 @@ body, err := download(url)
 // now you can extract(body) if there are no errors!
 ```
 
-**crawl** Given a seed URL, **download** the webpage, **extract** the words and URLs, and add all **cleaned URLss** 
+**crawl** Given a seed URL, **download** the webpage, **extract** the words and URLs, and add all **cleaned URLs** 
 found to a download queue. This queue should only crawl each url **once** and repeat this process for each url.
 ```go
 url := "https://cs272-f24.github.io/"
