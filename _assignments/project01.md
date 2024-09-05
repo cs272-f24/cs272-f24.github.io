@@ -11,10 +11,10 @@ Project01 adds support for http
 1. You will develop and test a web crawler, reusing your `clean()` and `extract()` code from lab02
 1. Your implementation must compile and pass *your* tests `TestDownload` and `TestCrawl`
 1. Your implementation will use the published test data
-  - [`https://cs272-f24.github.io/tests/index.html`](https://cs272-f24.github.io/tests/index.html)
-  - [`https://cs272-f24.github.io/tests/href.html`](https://cs272-f24.github.io/tests/href.html)
-  - [`https://cs272-f24.github.io/tests/simple.html`](https://cs272-f24.github.io/tests/simple.html)
-  - [`https://cs272-f24.github.io/tests/style.html`](https://cs272-f24.github.io/tests/style.html)
+  - [`https://cs272-f24.github.io/tests/project01/index.html`](/tests/project01/index.html)
+  - [`https://cs272-f24.github.io/tests/project01/href.html`](/tests/project01/href.html)
+  - [`https://cs272-f24.github.io/tests/project01/simple.html`](/tests/project01/simple.html)
+  - [`https://cs272-f24.github.io/tests/project01/style.html`](/tests/project01/style.html)
 `
 1. Your test will run automatically in your repo as a GitHub action.
 
