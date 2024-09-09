@@ -64,3 +64,4 @@ Your lab will receive the score indicated by the GitHub autograding action using
 1. 35 pts: `TestDownload()` (do you download the correct content)
 1. 35 pts: `TestCrawl()` (can you crawl a given seed url and download it along with all of the links embedded within)
 1. 20 pts: 1:1 code review to review your coding style and test cases
+1. 1. NB: grading happens on the branch named `dev`

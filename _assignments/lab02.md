@@ -80,3 +80,4 @@ Recall the testing example we covered in class [here](https://github.com/cs272-f
 Your lab will receive the score indicated by the GitHub autograding action using this rubric. Use these names exactly, including case.
 1. 70 points: TestExtract (do you extract the correct words and hrefs).
 1. 30 points: TestCleanHref (do you clean the hrefs accurately)
+1. NB: grading happens on the branch named `dev`
