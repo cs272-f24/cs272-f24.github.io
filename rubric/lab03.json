@@ -1,0 +1,11 @@
+{
+    "tests": {
+      "TestExtract": 5,
+      "TestCleanHref": 5,
+      "TestDownload": 5,
+      "TestCrawl": 5,
+      "TestSearch": 80
+    },
+    "dueDate": "2024-09-16"
+  }
+  
