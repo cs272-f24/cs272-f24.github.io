@@ -21,7 +21,7 @@ published: true
 ## Given
 1. From previous assignments:
     1. [Snowball stemmer](https://github.com/kljensen/snowball)
-    1. Corpus of [10 books from Project Gutenberg](/tests/top10/)
+    1. Corpus of [10 books from Project Gutenberg](/top10/)
 1. Lecture material on scoring and ranking search results
 1. You can use the Go [`sort.Interface`](https://pkg.go.dev/sort) interface to do the sorting
 1. You can use the [stopwords-iso](https://github.com/stopwords-iso/stopwords-en) collection of English stopwords. The `json` list is formatted similarly to Go.
