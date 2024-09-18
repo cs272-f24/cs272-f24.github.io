@@ -51,14 +51,15 @@ TF = occurrences of term / words in that document
 
 - If a search term appears in a small fraction of the documents, its frequency is a small number
 - To combine Term Frequency with Document Frequency, what can we do to it?
+- IDF = log(#docs in corpus / (#docs containing term + 1)) <!-- .element: class="fragment" -->
 
 ---
 
 # TF-IDF
 
 - Relevance = Term Frequency * **Inverse** Document Frequency
-- Should produce a number between 0.0 (not relevant) and 1.0 (very relevant)
-- Used in Search and Machine Learning applications
+- Should produce a small number between 0.0 (not relevant) and 2.0 (very relevant)
+ - 
 
 ---
 
