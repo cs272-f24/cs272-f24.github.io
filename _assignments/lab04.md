@@ -1,35 +1,35 @@
 ---
 layout: assignment
-due: 2023-09-25 23:59:59 -0800
-github_url: https://classroom.github.com/a/aHaeieFc
-published: false
+due: 2024-09-30 23:59:59 -0800
+github_url: https://classroom.github.com/a/B6VZMDlo
+published: true
 ---
 
-## Requirements
-1. In this lab you will build your own test case library by splitting some books 
-(represented in HTML) into chapters that you will later search.
-1. The class web site contains copies of [10 of the most-downloaded books](https://cs272-0304-f23.github.io/tests/top10/) from
-Project Gutenberg. The HTML follows a predictable pattern that you will
-parse using Go's `html.Parser`. You do NOT have to crawl that page. You can simply use the URLs.
+## Background
 
-## Given
-1. The key piece of information is that every chapter in the given books is demarcated
-by the HTML element `<div class="chapter"...>`. 
-1. When you parse the file, you will find a `<head>` element which should go in 
-every chapter you create
-1. Every chapter you create should end with the HTML elements `</body></html>`
-1. We will discuss strategies for building data structures and algorithms to process the input files
-1. We will discuss how you might use `html.Render()`, `html.Node.RemoveChild()`, `filepath`, `os.Create()`, and `os.MkdirAll()`
+1. For this lab, you will design a database schema using [SQLite](https://sqlite.org/index.html)
+1. In a subsequent project, we will adapt your search engine to use this schema 
+
+## Tools setup
+
+1. For this lab you will need to install the `sqlite3` command-line interpreter
+1. Check if you already have `sqlite3`  using `$ which sqlite3`. 
+1. If you don't have it you can install it in one of these ways:
+    1. MacOS users can use homebrew `% brew install sqlite`
+    1. Ubuntu users can use apt `$ sudo apt install sqlite`
+    1. From the [SQLite web site](https://sqlite.org/download.html)
+
+## Requirements
+
+1. Using the lecture discussion about relational modeling, develop a schema for your search engine data structures and represent it in two ways:
+1. Sketch an ER diagram on paper using your entities and cardinality
+1. Create tables using the `sqlite3` command-line interpreter and output the results using
+    ```text
+    sqlite> .output lab04.sql
+    sqlite> .dump
+    ```
+1. Please submit a photo of your sketch and lab04.sql to your assignment repo
 
 ## Rubric
-100 pts. for `TestSplit()` as shown by the autograder web page. 
 
-## Testing
-1. Your `TestSplit()` should use [this hash function](/tests/lab04/hashFile.txt) to generate a `uint32` hash digest 
-1. The expected hash values for the files are given [here](/tests/lab04/hashes.txt)
-1. To provide a reference example, [this file](https://github.com/cs272-0304-f23/lab04-given/blob/main/chap01.html) contains the correct contents for Chapter 1 of Frankenstein, and produces the hash value `668812877`. Use View Source in your browser to see how the the generated file contains:
-    1. `<html>`
-    1. The contents of the `<head>` node
-    1. `<body>`
-    1. The contents of the `<div class=chapter>` node
-    1. `</body></html>`
+1. 100 pts for credible effort
