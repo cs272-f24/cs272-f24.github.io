@@ -11,13 +11,11 @@ published: true
 1. Your solution must continue to support previous test cases
 1. Your solution must not introduce [SQL Injection](https://go.dev/doc/database/sql-injection) vulnerabilities
 1. Your solution must use a Go `interface` to build an abstraction for the persistent SQLite database vs. the in-memory map of maps
-    1. Make the indexing code switchable on the command line using a Go [flag](https://pkg.go.dev/flag), e.g. 
-        ```sh
-        $ go run . -index=inmem
-        ``` 
-        
-        or 
-
+    1. Make the indexing code switchable either using VS Code's `launch.json` 
+        ```json
+        "args": ["-index", "inmem"]
+        ```
+    or on the command line using a Go [flag](https://pkg.go.dev/flag), e.g. 
         ```sh
         $ go run . -index=sqlite
         ```
@@ -36,9 +34,7 @@ published: true
 1. 5 pts: `TestSearch()`
 1. 15 pts: `TestStop()`
 1. 40 pts: `TestTfIdf()`
-1. 20 pts: Mandatory code review. 
-    1. You will demonstrate completion of the requirements during your code review (no new test cases).
-    1. Please sign up for a different grader than you met for project01 or project02.
+1. 20 pts: Mandatory code review. You will demonstrate completion of the requirements during your code review (no new test cases).
 
 ## Implementation tips
 1. You'll need SQL `pragma foreign_keys = on;` for each database connection.
