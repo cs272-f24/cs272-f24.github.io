@@ -316,3 +316,33 @@ UPDATE customers SET postal_code=95070 WHERE id=1;
 Lots of [opinions](https://www.confessionsofadataguy.com/orms-are-the-cigarettes-of-the-data-engineering-world/)
 
 
+---
+
+## SQL Injection
+
+1. Definition: using user-provided data to build a SQL statement<!-- .element: class="fragment" -->
+1. SQL is real code translated by a scanner/parser/code generator<!-- .element: class="fragment" -->
+
+---
+
+## Anti-pattern 💩
+
+```go
+    userData := httpRequest.Params("name")
+    sqlCode := "SELECT name FROM users WHERE name = " + name
+    res, err := db.Query(sqlCode)
+```
+
+If name == "Bob; DROP TABLE users;" we're in big trouble<!-- .element: class="fragment" -->
+---
+
+## Use this pattern
+
+Separate SQL code from user-provided data using SQL `PREPARE` (ORMs do this automatically)
+
+```go
+    userData := httpRequest.Params("name")
+    sqlCode := "SELECT name FROM users WHERE name = ?"
+    stmt, err := db.Prepare(sqlCode)
+    res, err := stmt.Exec(userData)
+```
