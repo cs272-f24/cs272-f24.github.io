@@ -7,7 +7,7 @@ published: true
 
 ## Requirements
 
-1. You will evolve your project03 code to use a persistent [SQLite](https://sqlite.org/index.html) database rather than an in-memory map of maps
+1. You will evolve your project02 code to use a persistent [SQLite](https://sqlite.org/index.html) database in addition to the in-memory map of maps
 1. Your solution must continue to support previous test cases
 1. Your solution must not introduce [SQL Injection](https://go.dev/doc/database/sql-injection) vulnerabilities
 1. Your solution must use a Go `interface` to build an abstraction for the persistent SQLite database vs. the in-memory map of maps
