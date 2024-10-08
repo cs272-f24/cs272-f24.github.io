@@ -1,8 +1,8 @@
 ---
 layout: assignment
-due: 2023-10-27 23:59:59 -0800
-github_url: https://classroom.github.com/a/Qjtk9WuF
-published: false
+due: 2024-10-16 23:59:59 -0800
+github_url: https://classroom.github.com/a/_64aLzPq
+published: true
 ---
 
 ## Requirements
@@ -25,7 +25,7 @@ published: false
 
 ## Implementation Notes
 
-1. You should evolve your project03 Concurrent Crawler solution, adding a new data structure for the records in a `robots.txt` file. 
+1. You should evolve your project03 solution, adding a new data structure for the records in a `robots.txt` file. 
 1. You should implement the policies for `disallow` rules and `crawl-delay` rules before calling `http.Get()` in your crawler
 1. You should use `regexp.MatchString()` to read the records in the `robots.txt` file
 1. You should use `Time.Sub()` to check that the resulting `time.Duration` is >= the `crawl-delay` rule

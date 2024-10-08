@@ -1,0 +1,7 @@
+{
+    "tests": {
+      "TestCrawlDelay": 50,
+      "TestDisallow": 50
+    },
+    "dueDate": "2024-10-16"
+  }
