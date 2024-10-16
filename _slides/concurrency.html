@@ -1,0 +1,188 @@
+---
+title: Concurrency
+layout: raw
+---
+
+# Concurrency - Background and Terminology
+
+---
+
+## What Is Concurrency?
+
+1. Write your code so that several things appear to be happening at once <!-- .element: class="fragment" -->
+1. Done correctly, full utilization of hardware can improve performance <!-- .element: class="fragment" -->
+
+---
+
+## Concurrency in C, Java, etc.
+
+1. The [Posix Threads](https://en.wikipedia.org/wiki/Pthreads) <!-- .element: class="fragment" -->(pthreads) library offers Preemptive Multitasking  <!-- .element: class="fragment" -->
+1. Any code can be scheduled onto any processor core at any time <!-- .element: class="fragment" -->
+1. Ultimate high performance, but complex and hard to get right <!-- .element: class="fragment" -->
+
+---
+
+## Pthreads Challenges
+
+1. If memory is shared between "threads", reads/writes must be synchronized <!-- .element: class="fragment" -->
+1. Synchronization is done with "mutexes" (mutual exclusion) to sequence reads/writes <!-- .element: class="fragment" -->
+1. Buggy synchronization can result in <!-- .element: class="fragment" -->
+    1. "race condition" between threads
+    1. "deadlock" between threads
+
+---
+
+## Go's Approach
+
+1. "Don't communicate by sharing memory; share memory by communicating" <!-- .element: class="fragment" -->[footnote](https://go.dev/blog/codelab-share)<!-- .element: class="fragment" -->
+1. Go provides tools to avoid races and deadlocks <!-- .element: class="fragment" -->
+1. Pthreads is still down there, underneath Go's abstractions <!-- .element: class="fragment" -->
+
+---
+
+## Scheduling in Go
+
+1. Go provides lightweight "goroutines" (a pun on "coroutines")<!-- .element: class="fragment" --> [footnote](https://en.wikipedia.org/wiki/Coroutine)<!-- .element: class="fragment" -->
+1. The Go scheduler schedules ready goroutines onto OS threads <!-- .element: class="fragment" -->
+1. The OS scheduler schedules ready threads onto processor cores <!-- .element: class="fragment" -->
+
+---
+
+## Preemptive vs. Cooperative
+
+1. Traditional coroutines are cooperative - code must yield to other coroutines <!-- .element: class="fragment" -->
+1. Go was originally cooperative. What problems can you imagine? <!-- .element: class="fragment" -->
+1. Go is now preemptive. Even a tight loop gets preempted after 10 ms <!-- .element: class="fragment" -->
+
+---
+
+# Concurrent Programming in Go
+
+---
+
+## You've already seen goroutines
+
+```go
+func main() {
+    go Serve()
+    Crawl()
+    for {
+        time.Sleep(100 * time.Millisecond) // why?
+    }
+}
+```
+
+---
+
+## What If They Share Memory?
+
+```go
+var status string = "waiting"
+func Serve() {
+    status = "serving"
+}
+func main() {
+    go Serve()
+    status = "crawling"
+}
+```
+
+This is a race. The Go runtime will panic.
+
+---
+
+## How About Mutexes?
+
+This works, but isn't idiomatic Go
+
+```go
+var mx sync.Mutex
+func Serve() {
+    mx.Lock()
+    defer mx.Unlock()
+    status = "serving"
+}
+```
+
+However, mutexes are a reasonable way to synchronize access to a `map` or `sql.DB`
+
+---
+
+## Waitgroups
+
+A waitgroup blocks until goroutines finish
+
+```go
+func Worker(wg *sync.Waitgroup) {
+    defer wg.Done()
+    // work...
+}
+
+func main() {
+    var wg sync.Waitgroup
+    for i := 0; i < 5; i++ {
+        wg.Add(1)
+        go Worker(&wg)
+    }
+    wg.Wait()
+}
+```
+
+---
+
+## Share Memory By Communicating
+
+Channels are the idiomatic way to share memory
+
+```go
+func Serve(ch chan string) {
+    // insert the string "serving" into the channel
+    ch <- "serving"
+}
+func main() {
+    // ch is a channel which can contain one string
+    ch := make(chan string)
+    defer ch.Close()
+    go Serve(ch)
+    
+    // Wait for traffic on ch
+    fmt.Println(<- ch)
+}
+```
+
+---
+
+## Buffered Channels
+
+Use `select` to monitor several channels
+
+```go
+func main() {
+    // ch can contain up to 10 string elements
+    ch := make(chan string, 10)
+    defer ch.Close()
+    go Serve(ch)
+    go Crawl(ch)
+    select {
+        case status := <- ch:  // is ch readable?
+            fmt.Println(status)
+    }
+}
+```
+
+---
+
+## Everything Looks Different At Scale
+
+1. Crawling www.usfca.edu <!-- .element: class="fragment" --> is a big job <!-- .element: class="fragment" -->
+1. Performance characteristics of crawl/search operations? <!-- .element: class="fragment" -->
+1. SQLite does not allow concurrent writes <!-- .element: class="fragment" -->
+
+---
+
+## Potential Approaches
+
+1. You could have lots of goroutines and a waitgroup which waits for all of them to complete <!-- .element: class="fragment" -->
+1. You could have a small number of goroutines, but large channel buffers <!-- .element: class="fragment" -->
+1. You could have worker pools of goroutines which don't exit until the channel closes <!-- .element: class="fragment" -->
+1. You could protect SQLite with a mutex. Or just don't design concurrent inserts.<!-- .element: class="fragment" -->
