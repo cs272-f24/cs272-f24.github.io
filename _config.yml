@@ -47,7 +47,7 @@ collections:
     permalink: /:collection/:name
 
 ordered-categories:
-  - "RAG for LLMs"
+  - "Large Language Models"
   - "Concurrency"
   - "Information Retrieval"
   - "Web Crawler"
