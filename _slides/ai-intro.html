@@ -1,0 +1,133 @@
+---
+title: Concurrency
+layout: raw
+---
+
+# Intro to "AI"
+
+(warning, opinions ahead)
+
+---
+
+## History
+
+1. In the 1950s, [John McCarthy](https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)) coined the term Artificial Intelligence and believed we were a decade from making it work
+
+---
+
+## Pop Culture
+
+1. In [2001](https://en.wikipedia.org/wiki/2001:_A_Space_Odyssey), the HAL 9000 computer is programmed with conflicting instructions
+1. In [The Terminator](https://en.wikipedia.org/wiki/The_Terminator), a time-traveling robot stomps over human skulls
+1. In [Colossus: The Forbin Project](https://en.wikipedia.org/wiki/Colossus:_The_Forbin_Project) the US government gives control of the military to an AI system. The theme was revisited in [War Games](https://en.wikipedia.org/wiki/WarGames)
+---
+
+## Games
+
+1. In 1770 the [Mechanical Turk](https://en.wikipedia.org/wiki/Mechanical_Turk) appeared to play chess
+1. In 1996, IBM's [Deep Blue](https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)) beat Garry Kasparov (world #1 player) at chess
+1. In 2015, Google's [AlphaGo](https://en.wikipedia.org/wiki/AlphaGo) beat Fan Hui (world #1 player) at Go
+1. Some thought gameplay to be a proxy for human intelligence <!-- .element: class="fragment" -->
+
+---
+
+## Conversation
+
+1. The [Turing Test](https://en.wikipedia.org/wiki/Turing_test) is intuitive, but attackable 
+1. Attempts like [ELIZA](https://en.wikipedia.org/wiki/ELIZA) sound promising until you look under the covers
+1. Modern LLMs revisit the chatbot idea but use a different approach <!-- .element: class="fragment" -->
+
+---
+
+## AI Winter - 1980s
+
+1. Many attempts to model human performance with Hardware ([Connection Machine](https://en.wikipedia.org/wiki/Connection_Machine)), Programming Languages ([LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language))), and Data Structures ([Expert Systems](https://en.wikipedia.org/wiki/Expert_system)) fell woefully short, overpromising and underdelivering
+1. Intelligence is hard to define. What humans do is closely related to our [physiology](https://en.wikipedia.org/wiki/Synapse) <!-- .element: class="fragment" -->
+1. We wanted algorithmic solutions which work in the small and can be proven inductively <!-- .element: class="fragment" -->
+
+---
+
+## Neural Networks
+
+1. Frank Rosenblatt's [Perceptron](https://en.wikipedia.org/wiki/Frank_Rosenblatt#) tried to model our "hardware"
+1. Train a "model" with correct example data <!-- .element: class="fragment" -->
+1. A "hidden layer" adapts to feedback <!-- .element: class="fragment" -->
+1. An output layer uses the hidden layer to classify inputs into outputs <!-- .element: class="fragment" -->
+
+---
+
+## Neural Network Examples
+
+1. [Iris flowers](https://medium.com/computing-science/using-multilayer-perceptron-in-classification-problems-iris-flower-6fc9fbf36040) <!-- .element: class="fragment" -->
+1. [Chihuahua or blueberry muffin?](https://www.freecodecamp.org/news/chihuahua-or-muffin-my-search-for-the-best-computer-vision-api-cbda4d6b425d/) <!-- .element: class="fragment" -->
+1. Mimics, but does not mirror, brain physiology <!-- .element: class="fragment" -->
+1. Neural networks use correlations in data without expressing them explicitly <!-- .element: class="fragment" -->
+
+---
+
+## Natural Language Processing
+
+1. Interpret input, transform (how?), generate output
+1. Parts of Speech
+1. Semantic Similarity
+1. Output in another natural language
+
+---
+
+## Machine Learning
+
+1. Neural Networks + NLP + oodles of data = success that 80s AI never had <!-- .element: class="fragment" -->
+1. Do machines really "learn"? <!-- .element: class="fragment" -->
+1. I don't know, but reweighting nodes in NNs improves inference performance <!-- .element: class="fragment" -->
+
+---
+
+## Large Language Models
+
+1. If we wanted AI which works in small datasets and uses readable logic, LLMs are the opposite of that <!-- .element: class="fragment" -->
+1. LLMs do probabilistic inference, not if/then/else logic <!-- .element: class="fragment" -->
+1. One could say the logic is encoded in the model, but not in a way we can trace it <!-- .element: class="fragment" -->
+1. They only got really good when trained on billions of parameters <!-- .element: class="fragment" -->
+
+---
+
+## What Are The Limits?
+
+1. "Can AI do X?" <!-- .element: class="fragment" -->
+1. Can X be expressed in terms of a large volume of unbiased data? <!-- .element: class="fragment" -->
+1. If so, Transformer-based systems can generate useful output <!-- .element: class="fragment" -->
+1. Would you rely on it for mission-critical decisions? <!-- .element: class="fragment" -->
+
+---
+
+## Philosophical Questions
+
+1. Are LLMs intelligent? Do they understand? Can they learn?  <!-- .element: class="fragment" -->
+1. Those are loaded questions containing hidden assumptions  <!-- .element: class="fragment" -->
+1. We don't have a good definition of intelligence <!-- .element: class="fragment" -->
+1. SAT? LSAT? IQ test? Does the metric have to be analogous to measuring human performance? <!-- .element: class="fragment" -->
+
+---
+
+## Boundaries
+
+1. Faith-based connotations of soul are out of scope <!-- .element: class="fragment" -->
+1. Defining intelligence in terms of consciousness is out of scope, but I can recommend a<!-- .element: class="fragment" --> [book](https://www.amazon.com/Consciousness-Short-Introduction-Susan-Blackmore/dp/0192805851) <!-- .element: class="fragment" -->
+1. LLMs are not sentient or conscious <!-- .element: class="fragment" -->
+
+---
+
+## Be Careful
+
+1. Extrapolation: "If it can do X, I believe it can do Y" <!-- .element: class="fragment" -->
+1. Anthropomorphizing: "if it sounds like a person, I should treat it like a person" <!-- .element: class="fragment" -->
+1. We have reason for optimism, but <!-- .element: class="fragment" --> [tragedy](https://www.nbcnews.com/tech/characterai-lawsuit-florida-teen-death-rcna176791) <!-- .element: class="fragment" -->can follow misunderstanding <!-- .element: class="fragment" -->
+
+---
+
+## Future Topics
+
+1. How does semantic similarity work?
+1. How does gradient descent work?
+1. How to use current events?
+1. OpenAI APIs we could use: Chatbot, tool calling, fine tuning
