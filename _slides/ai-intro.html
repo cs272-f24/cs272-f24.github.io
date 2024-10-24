@@ -3,15 +3,17 @@ title: Concurrency
 layout: raw
 ---
 
-# Intro to "AI"
+# Intro to AI
 
-(warning, opinions ahead)
+(Context for CS 272, not competing with CS 462)
 
 ---
 
 ## History
 
 1. In the 1950s, [John McCarthy](https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)) coined the term Artificial Intelligence and believed we were a decade from making it work
+1. Over time, the name AI has been applied to different technologies, with varying success
+1. Common definitions involve sensing, planning, acting, and learning in our world
 
 ---
 
@@ -86,8 +88,8 @@ layout: raw
 
 1. If we wanted AI which works in small datasets and uses readable logic, LLMs are the opposite of that <!-- .element: class="fragment" -->
 1. LLMs do probabilistic inference, not if/then/else logic <!-- .element: class="fragment" -->
-1. One could say the logic is encoded in the model, but not in a way we can trace it <!-- .element: class="fragment" -->
-1. They only got really good when trained on billions of parameters <!-- .element: class="fragment" -->
+1. One could say the logic is encoded in the model, but not in a way we can trace decisions <!-- .element: class="fragment" -->
+1. They only got really good when trained on<!-- .element: class="fragment" --> [billions of parameters](https://en.wikipedia.org/wiki/Attention_Is_All_You_Need) <!-- .element: class="fragment" -->
 
 ---
 
@@ -128,6 +130,7 @@ layout: raw
 ## Future Topics
 
 1. How does semantic similarity work?
-1. How does gradient descent work?
 1. How to use current events?
+1. How does gradient descent work?
+1. Implications for hardware architecture
 1. OpenAI APIs we could use: Chatbot, tool calling, fine tuning
