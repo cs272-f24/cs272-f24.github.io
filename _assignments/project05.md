@@ -1,50 +1,35 @@
 ---
 layout: assignment
-due: 2023-11-21 23:59:59 -0800
-github_url: https://classroom.github.com/a/5aZFQ0pV
+due: 2024-11-11 23:59:59 -0800
+github_url: https://classroom.github.com/a/PuZC1TB3
 published: false
 ---
 
 ## Requirements
 
-1. You will evolve your lab07 solution, again crawling the web site you chose in lab07, and adding several new Information Retrieval features:
-1. Wildcard searching
-    1. Your index.html page will include new UI to do wildcard searching. You have two options:
-        - Add a checkbox to the form for wildcards search
-        - Add a character to the search term (such as '*') to indicate wildcard search
-    1. Your SQLite query will add support for `LIKE` and `%`
-1. Word N-grams
-    1. Your crawler will add support for bigram (2-gram) word sequences to support searches like "soccer team" or "computer science"
-1. Page titles
-    1. You will use the HTML parser to extract the content of `title` tags and present those as search hits rather than the URLs
-    1. You will add the page title to your SQL relational model and your search handler logic
+For this project you will evolve your vector database solution from lab06 by adding:
+
+1. A feature to ask questions of an LLM using command-line input
+1. A solution for the "PHILosophy" problem
+1. A prompting strategy which answers questions about courses by department, course name, instructor, times, and location
 
 ## Given
 
-1. We will discuss indexing strategies and end-to-end design approaches
+In lecture, we will discuss:
+
+1. How to use Go to read input from the command line
+1. The problems of relying on vector similarity to build prompts
+1. Opportunities to improve the database implementation using metadata
+1. Opportunities to improve the prompts and leverage the capabilities of the LLM
 
 ## Rubric
 
-1. 50 pts. - correctness as shown by `go test` on your local machine. You will construct test cases for 
-    1. a 2-gram search expressing hits using page titles (25 pts) 
-    1. a wildcard search expressing hits using page titles (25 pts)
+1. 50 pts. - correctness including required test cases
+    1. `TestPhil` to prompt the LLM to correctly answer the question, "What courses is Phil Peterson teaching in Fall 2024?"
+    1. `TestPHIL` to prompt the LLM to correctly answer the question, "Which philosophy courses are offered this semester?"
+    1. `TestBio` to prompt the LLM to correctly answer the question, "Where does Bioinformatics meet?"
+    1. `TestGuitar` to prompt the LLM to correctly answer the question, "Can I learn guitar this semester?"
+    1. `TestMultiple` to prompt the LLM to correctly answer the question, "I would like to take a Rhetoric course from Phil Choong. What can I take?"
 1. 50 pts. - code review
-
-## Implementation tips
-1. Here is an example HTML form which includes a checkbox
-    ```html
-    <html>
-        <body>
-            <form action="/search" method="get">
-                <label for="inputBox">Search</label>
-                <input id="inputBox" name="term"/>
-                <button type="submit">Go</button>
-                <br>
-                <input type="checkbox" id="wildcard" name="wildcard" value="wildcard">
-                <label for="wildcard">Wildcard Search</label>
-            </form>
-        </body>
-    </html>
-```
-1. You can use SQLite [`LIKE`](https://www.sqlitetutorial.net/sqlite-like/) to do wildcard searches
-1. You can add a new SQL table for bigram hits
+    1. You must build an abstraction around the chat completion API so you can reuse it
+    1. You must build the prompt in a general way, without hard-coding the desired LLM output in the prompt
