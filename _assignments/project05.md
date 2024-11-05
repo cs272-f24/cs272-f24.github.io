@@ -33,3 +33,5 @@ In lecture, we will discuss:
 1. 50 pts. - code review
     1. You must build an abstraction around the chat completion API so you can reuse it
     1. You must build the prompt in a general way, without hard-coding the desired LLM output in the prompt
+    1. You must use object-oriented structs and methods to build the components required for your database, chatbot, etc. No long main programs. 
+    1. You must use the techniques discussed in lecture. If you think of a shortcut, you may implement that in addition to the approach we discussed.
