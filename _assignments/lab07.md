@@ -22,4 +22,4 @@ For this lab, you will evolve your project05 solution as follows:
 
 ## Draft Rubric - subject to change
 
-1. 100 pts - Duplicate test cases from project05?
+1. 100 pts - Improve test cases from project05?
