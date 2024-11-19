@@ -20,6 +20,13 @@ For this lab, you will evolve your project05 solution as follows:
 
 1. We will discuss the fundamentals of JSON schema and tool calling in lecture
 
-## Draft Rubric - subject to change
+## Rubric
 
-1. 100 pts - Improve test cases from project05?
+Same test cases as project05, except the guitar one is optional
+
+1. 100 pts. - correctness including required test cases
+    1. `TestPhil` to prompt the LLM to correctly answer the question, "What courses is Phil Peterson teaching in Fall 2024?"
+    1. `TestPHIL` to prompt the LLM to correctly answer the question, "Which philosophy courses are offered this semester?"
+    1. `TestBio` to prompt the LLM to correctly answer the question, "Where does Bioinformatics meet?"
+    1. `TestGuitar` to prompt the LLM to correctly answer the question, "Can I learn guitar this semester?"
+    1. `TestMultiple` to prompt the LLM to correctly answer the question, "I would like to take a Rhetoric course from Phil Choong. What can I take?"
