@@ -2,7 +2,7 @@
 layout: assignment
 due: 2024-12-03 23:59:59 -0800
 github_url: https://classroom.github.com/a/WOARv_96
-published: false
+published: true
 ---
 
 ## Background
@@ -21,7 +21,7 @@ published: false
     1. After conda has been installed you can create a new python 3.12 environment using `conda create -n env312 python=3.12` where `env312` is any name you choose for the name of the virtual python environment
     1. Then run `conda activate env312` and you should see `(env312)` on the left side of your shell prompt
 1. Install aider using the instructions on their web page
-1. Create an Anthropic API key and put it in your environment, just like you did for OpenAI. You'll need to give them a payment method, but it should cost less than $1 to develop this lab.
+1. Create an [Anthropic](https://www.anthropic.com/) API key and put it in your environment, just like you did for OpenAI. You'll need to give them a payment method, but it should cost less than $1 to develop this lab.
 
 ## Objective
 
