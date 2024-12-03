@@ -26,10 +26,14 @@ published: true
 ## Objective
 
 1. You will use aider to add a web server (HTTP `Handle`, `ListenAndServe` etc.) to your project06 solution
-1. You can replace your input loop (`io.Scanner` etc.) if you wish. You don't need to keep both
-1. You will use aider to develop a web page which can accept user prompts and chat with the LLM
-1. Your web server should reuse your chat code to call OpenAI to answer the same kinds of questions that your project06 solution answers.
-1. Feel free to use your own creativity to develop prompts which cause aider to generate an attractive and useful web app. 
+  - Aider can replace your input loop (`io.Scanner` etc.) if you wish. You don't need to keep both
+  - Aider can develop a web page which can accept user prompts and chat with the LLM
+  - Aider can reuse your chat code to call OpenAI to answer the same kinds of questions that your project06 solution answers.
+1. Feel free to use your own creativity to prompt Aider to make an attractive web app. Some ideas:
+  - Appearance similar to other chat apps
+  - Light/dark mode
+  - Spinner while waiting for OpenAI
+  - Theme in the style of ... 
 1. You should do as little manual coding and fixing as possible. Prompt aider to do the work.
 
 ## Rubric
